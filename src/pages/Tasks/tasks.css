@@ -1,0 +1,79 @@
+.main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.todo-container {
+    background: white;
+    width: 400px;
+    margin: 50px auto 0;
+    padding: 20px;
+    max-height: 800px;
+    overflow: auto;
+    border-radius: 50px;
+}
+
+.todo-container::-webkit-scrollbar {
+    display: none;
+}
+
+#todo-list {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+}
+
+.list-item {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.button {
+    outline: none;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 10px;
+}
+
+.edit-button {
+    color: orange;
+}
+
+.delete-button {
+    color: red;
+}
+
+.todo-text {
+    margin-left: 15px;
+    vertical-align: text-top;
+    align-self: center;
+    cursor: pointer;
+}
+
+.flex-separate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link-button {
+    align-self: center;
+    padding: 15px 30px;
+    background-color: purple;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #490049;
+    border-radius: 15px;
+    font-size: 18px;
+}

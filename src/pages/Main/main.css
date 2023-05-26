@@ -1,0 +1,18 @@
+.main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.windowForm {
+    background-color: white;
+    border-radius: 30px;
+    border: 2px gray solid;
+    padding: 15px;
+}
+
+.textCenter{
+    text-align: center;
+}

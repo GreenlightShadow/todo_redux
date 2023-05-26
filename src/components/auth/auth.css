@@ -1,0 +1,18 @@
+.authForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input {
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+button {
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+}
