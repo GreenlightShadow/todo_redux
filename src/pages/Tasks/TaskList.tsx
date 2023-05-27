@@ -1,23 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import "./tasks.css"
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {RemoveTodoAction, UpdateTodoAction} from "../../actions/TodoActions";
 import {Link, useNavigate} from "react-router-dom";
 import Modal from "../../components/modal/Modal";
 import Button from "../../components/base/Button";
 import {FaEdit, FaTrash} from 'react-icons/fa'
+import {useAppDispatch} from "../../hooks";
 
-function TaskList(props) {
+function TaskList(props: {active: boolean}) {
 
     const [modalActive, setModalActive] = useState(false)
     const [modalEditActive, setModalEditActive] = useState(false)
-    const [task, setTask] = useState('');
-    const dispatch = useDispatch()
+    const [task, setTask] = useState({
+        id: "",
+        status: false,
+        todo: ""
+    });
+    const dispatch = useAppDispatch()
 
-    const Todo = useSelector(state => state.Todo)
+    const Todo = useSelector((state: {Todo: {todos: any[]}}) => state.Todo)
     const {todos} = Todo
 
-    const user = useSelector(state => state.User)
+    const user = useSelector((state: {User: string}) => state.User)
 
     const navigate = useNavigate();
 
@@ -27,11 +32,11 @@ function TaskList(props) {
         }
     }, [user, navigate]);
 
-    function removeHandler(t) {
+    function removeHandler(t: { id: string; status: boolean; todo: string; }) {
         dispatch(RemoveTodoAction(t))
     }
 
-    function updateHandler(t) {
+    function updateHandler(t: { id: string; status: boolean; todo: string; }) {
         dispatch(UpdateTodoAction(t))
     }
 
@@ -48,7 +53,7 @@ function TaskList(props) {
                     <Button onClick={() => setModalActive(true)} />
                 </div>
                 <ul id="todo-list">
-                    {todos && todos.filter(todo => todo.status === props.active).map(t => (
+                    {todos && todos.filter(todo => todo.status === props.active).map((t: {id: string, status: boolean, todo: string}) => (
                         <li key={t.id} className="list-item">
                             <span onClick={() => updateHandler(t)} className="todo-text" style={t.status ? {textDecoration: "none"} : {textDecoration: "line-through"}}>{t.todo}</span>
                             <div className="actions">
@@ -62,7 +67,7 @@ function TaskList(props) {
                     ))}
                 </ul>
             </div>
-            <Modal edit={false} active={modalActive} close={() => setModalActive(false)} />
+            <Modal task={task} edit={false} active={modalActive} close={() => setModalActive(false)} />
             <Modal task={task} edit={true} active={modalEditActive} close={() => setModalEditActive(false)} />
         </div>
     );

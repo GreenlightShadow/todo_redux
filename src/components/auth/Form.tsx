@@ -5,17 +5,17 @@ import Submit from "./Submit";
 import {useNavigate} from "react-router-dom";
 import "./auth.css"
 import {CreateUserAction} from "../../actions/UserActions";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../../hooks";
 
 function Form() {
     const [user, setUser] = useState('')
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleOnClick = useCallback(() => navigate('/active', {replace: true}), [navigate]);
 
 
-    function submitHandler(e) {
+    function submitHandler(e: { preventDefault: () => void; }) {
         e.preventDefault()
         if (user === '') {
             return
