@@ -36,7 +36,7 @@ const Modal = (props: {
         if (props.task.todo !== "" && !changed && props.edit) {
             setTodo(props.task.todo)
         }
-    })
+    }, [props.task.todo, props.edit, changed])
 
     return (
         <div className={props.active ? "modal active" : "modal"} onClick={props.close}>
